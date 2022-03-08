@@ -24,11 +24,8 @@ jobs:
         device:
           - dipper
           - enchilada
-          - enchilada-8g
           - fajita
-          - fajita-8g
           - polaris
-          - polaris-8g
           - beryllium
           - perseus
           - nx616j
@@ -42,7 +39,7 @@ jobs:
           - trident
           - draco
           - pd1821
-          - ayn-odin
+          - odin-base
           - akershus
           - equuleus
 
@@ -55,7 +52,7 @@ jobs:
       - name: Install requires packages
         run: |
           sudo apt-get update
-          sudo apt-get -y install build-essential uuid-dev iasl nasm gcc-aarch64-linux-gnu abootimg python3-distutils python3-pil python3-git
+          sudo apt-get -y install build-essential uuid-dev iasl nasm gcc-aarch64-linux-gnu abootimg python3-distutils python3-pil python3-git gettext
 
       - name: Build device ${{ matrix.device }}
         run: |

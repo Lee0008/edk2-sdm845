@@ -12,8 +12,10 @@
 !include sdm845Pkg/sdm845Pkg.dsc
 
 [PcdsFixedAtBuild.common]
-  # System Memory (5GB)
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x15AE00000
 
   gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
   gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2280
+
+  gsdm845PkgTokenSpaceGuid.PcdDeviceVendor|"Nubia"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceProduct|"X"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceCodeName|"nx616j"

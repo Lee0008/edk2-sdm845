@@ -12,8 +12,10 @@
 !include sdm845Pkg/sdm845Pkg.dsc
 
 [PcdsFixedAtBuild.common]
-  # System Memory (5GB)
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x15AE00000
 
   gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
   gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1920
+
+  gsdm845PkgTokenSpaceGuid.PcdDeviceVendor|"Qualcomm"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceProduct|"Generic Snapdragon 845 Device"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceCodeName|"sdm845-generic"

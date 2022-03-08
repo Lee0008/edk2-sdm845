@@ -7,19 +7,21 @@
   SUPPORTED_ARCHITECTURES        = AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
-  FLASH_DEFINITION               = sdm845Pkg/Devices/fajita.fdf
-
-  # Enable A/B Slot Environment
-  DEFINE AB_SLOTS_SUPPORT        = TRUE
+  FLASH_DEFINITION               = sdm845Pkg/Devices/odin.fdf
 
 !include sdm845Pkg/sdm845Pkg.dsc
 
 [BuildOptions.common]
-  GCC:*_*_AARCH64_CC_FLAGS = -DMEMORY_8G=1 -DAB_SLOTS_SUPPORT=1 -DDISPLAY_DPI=440 -DENABLE_SIMPLE_INIT
+  GCC:*_*_AARCH64_CC_FLAGS = -DAB_SLOTS_SUPPORT=1 -DENABLE_SIMPLE_INIT
 
 [PcdsFixedAtBuild.common]
-  # System Memory (7GB)
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x1E0000000
 
   gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
-  gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2340
+  gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1920
+
+  # Simple Init
+  gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|369
+
+  gsdm845PkgTokenSpaceGuid.PcdDeviceVendor|"AYN"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceProduct|"Odin"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceCodeName|"ayn-odin"

@@ -11,7 +11,15 @@
 
 [Discord英语交流群](https://discord.gg/XXBWfag)
 
-QQ中文交流群: 697666196 (主群)      737223105 (Linux/edk2)
+QQ中文交流群:
+
+[697666196 (Renegade-Project OffTopic 1)](https://jq.qq.com/?_wv=1027&k=JbOy29zv)
+[996450026 (Renegade-Project OffTopic 2)](https://jq.qq.com/?_wv=1027&k=16xaDJnU)
+[996450026 (Renegade-Project OffTopic 3)](https://jq.qq.com/?_wv=1027&k=o9jN36Nn)
+[996450026 (Renegade-Project OffTopic 4)](https://jq.qq.com/?_wv=1027&k=YxXrIR7s)
+[737223105 (Renegade-Project Linux/edk2)](https://jq.qq.com/?_wv=1027&k=KsQdNXl6)
+991796138（情感交流群，仅限邀请）
+766060878（核心管理群，暂不开放）
 
 [Windows 驱动](https://github.com/edk2-porting/WOA-Drivers)
 
@@ -21,33 +29,17 @@ QQ中文交流群: 697666196 (主群)      737223105 (Linux/edk2)
 
 ## 警告
 
+**该仓库禁止用于任何商业用途**
+
+**如果要重分发，你需要保证用户可以获取更新**
+
 **请勿尝试移植到任何索尼和谷歌设备上**
 
 **你的UFS会被清空!!!**
 
 ## 已支持的设备
 
-1.  一加6                  (enchilada)
-2.  一加6T                 (fajita)
-3.  小米MIX3               (perseus)
-4.  小米PocoPhone F1       (beryllium)
-5.  魅族16th               (m1882)
-6.  魅族16th Plus          (m1892)
-7.  锤子坚果R1             (trident)
-8.  黑鲨手机一代           (skr-a0)
-9.  OPPO Find X            (pafm00)
-10. 小米MIX2S              (polaris)
-11. LG G7                  (judyln)
-12. 三星S9+                (star2qltechn)
-13. 小米7（工程机）        (dipper-old)
-14. 小米8                  (dipper)
-15. 努比亚X                (nx616j)
-16. 诺基亚9 PureView       (olympic)
-17. 华硕 ZenFone 5Z        (draco)
-18. Vivo NEX 双屏版        (pd1821)
-19. ayn odin handheld      (ayn-odin)
-20. 中兴天机Axon 9 Pro     (akershus)
-21. 小米8UD 屏幕指纹版     (equuleus)
+参阅[Windows设备支持状态](https://renegade-project.org/#/zh/windows/state-frame.html)
 
 ## 依赖
 
@@ -60,21 +52,39 @@ Ubuntu 20.04:
 ```bash
 sudo apt update
 sudo apt upgrade
-sudo apt install build-essential uuid-dev iasl git nasm gcc-aarch64-linux-gnu abootimg python3-distutils python3-pil python3-git
+sudo apt install build-essential uuid-dev iasl git nasm gcc-aarch64-linux-gnu abootimg python3-distutils python3-pil python3-git gettext
+```
+
+如果你的编译器为 GCC 11+, 请手动修改 `edk2/BaseTools/Source/C/Makefiles/header.makefile`
+
+```diff
+diff --git a/BaseTools/Source/C/Makefiles/header.makefile b/BaseTools/Source/C/Makefiles/header.makefile
+index 0df728f..247c917 100644
+--- a/BaseTools/Source/C/Makefiles/header.makefile
++++ b/BaseTools/Source/C/Makefiles/header.makefile
+@@ -92,7 +92,7 @@ BUILD_CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -fwrapv \
+ -Wno-unused-result -nostdlib -g
+ else
+ BUILD_CFLAGS = -MD -fshort-wchar -fno-strict-aliasing -fwrapv \
+--fno-delete-null-pointer-checks -Wall -Werror \
++-fno-delete-null-pointer-checks -Wall \^M
+ -Wno-deprecated-declarations -Wno-stringop-truncation -Wno-restrict \
+ -Wno-unused-result -nostdlib -g
+ endif
 ```
 
 ## 构建
 
-**不建议使用Ubuntu 18.04版本，请使用Ubuntu 20.04或以上版本**
+**不建议使用Ubuntu 18.04版本，请使用Ubuntu 20.04**
 
-1.克隆此项目（默认使用国内fastgit镜像加速）
+1.克隆此项目（默认使用国内cnpmjs.org镜像加速）
 
 ```bash
-git clone https://hub.fastgit.org/edk2-porting/edk2-sdm845.git --depth=1
+git clone https://github.com.cnpmjs.org/edk2-porting/edk2-sdm845.git --depth=1
 cd edk2-sdm845
 ```
 
-2.1 编译此项目（默认使用fastgit加速submodule克隆，若不需要请删去 `--chinese`）
+2.1 编译此项目（默认使用cnpmjs加速submodule克隆，若不需要请删去 `--chinese`）
 
 ```bash
 bash build.sh --chinese --device DEVICE

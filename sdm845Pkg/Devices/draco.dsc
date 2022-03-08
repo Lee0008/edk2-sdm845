@@ -12,8 +12,10 @@
 !include sdm845Pkg/sdm845Pkg.dsc
 
 [PcdsFixedAtBuild.common]
-  # System Memory (5GB)
-  gArmTokenSpaceGuid.PcdSystemMemorySize|0x15AE00000
 
   gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
   gsdm845PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|2246
+
+  gsdm845PkgTokenSpaceGuid.PcdDeviceVendor|"ASUS"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceProduct|"ZenFone 5Z"
+  gsdm845PkgTokenSpaceGuid.PcdDeviceCodeName|"draco"
